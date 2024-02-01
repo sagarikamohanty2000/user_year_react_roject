@@ -1,0 +1,48 @@
+.formLayout {
+  width: 600px;
+  height: 190px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  border: 2px solid gray;
+  margin-top: 30px;
+  display: flex;
+  margin-left: 450px;
+}
+
+.nameLabel {
+  font-size: larger;
+  font-weight: 650;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 10px;
+  margin-left: 50px;
+}
+.nameInput input {
+  margin-left: 50px;
+  margin-top: 5px;
+  width: 500px;
+  height: 20px;
+  border-radius: 5px;
+}
+.yearLabel {
+  font-size: larger;
+  font-weight: 650;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 10px;
+  margin-left: 50px;
+}
+.yearInput input {
+  margin-left: 50px;
+  margin-top: 5px;
+  width: 500px;
+  height: 20px;
+  border-radius: 5px;
+}
+.addBtn button {
+  margin-left: 50px;
+  background-color: purple;
+  height: 30px;
+  width: 90px;
+  margin-top: 10px;
+  border-radius: 3px;
+  font-weight: 700;
+}
