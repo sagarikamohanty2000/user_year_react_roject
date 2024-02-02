@@ -4,12 +4,9 @@ const UserDetail = (props) => {
 
     return (
         <li className="contents">
-            <div className="username-div">
-                {props.user.name}
-            </div>
-            <div className="age-div">
-                {` (${props.user.year} years old)`}
-            </div>
+        
+                {props.user.name}  {`(${props.user.year} years old)`}
+            
         </li>
     )
 }
