@@ -7,17 +7,26 @@ const InputForm = (props) => {
     const [year, setYear] = useState("");
 
     const onSubmitHandler = (event) => {
-        event.preventDefault();
+        
+      event.preventDefault();
+
       const newUser ={
-        username : name,
-        age : year
-      }
+        name : name,
+        year : year
+      };
+
        props.onSaveUserDetails(newUser);
+       console.log("NewUserSaved")
        setName("");
        setYear("");
     }
 
+    const nameHandler = (event) => {
+        console.log(event.target.value);
+    setName(event.target.value);
+    }
     const yearHandler = (event) => {
+        console.log(event.target.value);
      setYear(event.target.value); 
     }
   return (
@@ -27,13 +36,13 @@ const InputForm = (props) => {
           <label>Username</label>
         </div>
         <div className="nameInput">
-          <input type="text" onChange={(event) => {setName(event.target.value)}}></input>
+          <input type="text" value={name} onChange={nameHandler}></input>
         </div>
         <div className="yearLabel">
           <label>Age (Years)</label>
         </div>
         <div className="yearInput">
-          <input type="number" onChange={yearHandler}></input>
+          <input type="number" value={year} onChange={yearHandler}></input>
         </div>
         <div className="addBtn">
           <button type="submit">Add User</button>

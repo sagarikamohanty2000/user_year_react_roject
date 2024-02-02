@@ -1,15 +1,17 @@
 import InputForm from "./InputForm";
 
-const UserDetails = (props) => {
-    
-  const userDetails = (newuserDetails) => {
+const NewUser = (props) => {
+
+  const addUser = (newuserDetails) => {
     const userDetail = {
       ...newuserDetails,
-      id: Math.random().toString(),
+      id: Math.random(),
     };
+    console.log(userDetail);
     props.addNewUser(userDetail);
   };
-  return <InputForm onSaveUserDeatils={userDetails}></InputForm>;
+
+  return (<InputForm onSaveUserDetails={addUser}></InputForm>);
 };
 
-export default UserDetails;
+export default NewUser;
