@@ -1,0 +1,14 @@
+
+.user-detail-layout{
+
+    width: 580px;
+    height: 48px;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid gray;
+    padding-top: 15px;
+    padding-left: 18px;
+    margin-top: 0px;
+    display: flex;
+    margin-left: 411px;
+}
