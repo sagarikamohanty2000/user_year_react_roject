@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import ErrorModel from "../Error/ErrorModel";
 import "./InputForm.css";
 
 const InputForm = (props) => {
-  const [name, setName] = useState("");
-  const [year, setYear] = useState("");
+  const name = useRef();
+  const year = useRef();
   const [error, setError] = useState();
 
   const errorHandler = (errorBoolean) => {
@@ -14,11 +14,11 @@ const InputForm = (props) => {
     event.preventDefault();
 
     const newUser = {
-      name: name,
-      year: year,
+      name: name.current.value,
+      year: year.current.value,
     };
 
-    if (name.trim().length === 0 || year.trim().length === 0){
+    if (name.current.value.trim().length === 0 || year.current.value.trim().length === 0){
       setError({
         title: "Invalid Input",
         message: "Please enter a valid name or age(no empty fields please)!",
@@ -26,7 +26,7 @@ const InputForm = (props) => {
       return;
     }
 
-    if (year < 1) {
+    if (+year.current.value < 1) {
      setError({
       title:"Invalid Age",
       message: "Please enter a valid Age( >0 )!"
@@ -36,16 +36,10 @@ const InputForm = (props) => {
 
 
     props.onSaveUserDetails(newUser);
-    setName("");
-    setYear("");
+    name.current.value ="";
+    year.current.value ="";
   };
 
-  const nameHandler = (event) => {
-    setName(event.target.value);
-  };
-  const yearHandler = (event) => {
-    setYear(event.target.value);
-  };
   return (
     <div>
       
@@ -56,13 +50,13 @@ const InputForm = (props) => {
             <label>Username</label>
           </div>
           <div className="nameInput">
-            <input type="text" value={name} onChange={nameHandler}></input>
+            <input type="text" ref={name}></input>
           </div>
           <div className="yearLabel">
             <label>Age (Years)</label>
           </div>
           <div className="yearInput">
-            <input type="number" value={year} onChange={yearHandler}></input>
+            <input type="number" ref={year}></input>
           </div>
           <div className="addBtn">
             <button type="submit">Add User</button>
