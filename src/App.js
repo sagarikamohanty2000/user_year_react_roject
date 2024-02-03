@@ -6,7 +6,6 @@ import "./App.css";
 const dummy = [];
 
 const App = () => {
-
   const [details, setUserDetail] = useState(dummy);
 
   const addUser = (userDetail) => {
@@ -15,19 +14,15 @@ const App = () => {
     });
     console.log("App.js");
     console.log(details);
- 
   };
   return (
     <div className="App">
       <header className="App-header">
-        <NewUser addNewUser={addUser}/>
+        <NewUser addNewUser={addUser} />
       </header>
-
-        <UserList Userdetail={details}></UserList>
-      
-     
+      <UserList Userdetail={details}></UserList>
     </div>
   );
-}
+};
 
 export default App;

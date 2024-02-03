@@ -1,13 +1,15 @@
+import React from "react";
 import "./ErrorModel.css";
+import ReactDOM from "react-dom";
 
 const ErrorModel = (props) => {
-    const errorResolved = () => {
-      props.resolveError(true);
-    }
-  return (
-    <div>
-      <div className="backdrop" />
-      <div class="layout">
+  const Backdrop = () => {
+    return <div className="backdrop" />;
+  };
+
+  const OverlayModule = (props) => {
+    return (
+      <div className="layout">
         <header className="header-h2">
           <h2>{props.title}</h2>
         </header>
@@ -15,11 +17,22 @@ const ErrorModel = (props) => {
           <p>{props.message}</p>
         </div>
         <footer>
-          <button type="button" onClick={errorResolved}>Okay</button>
+          <button type="button" onClick={errorResolved}>
+            Okay
+          </button>
         </footer>
       </div>
-    </div>
-  );
+    );
+  };
+
+  const errorResolved = () => {
+    props.resolveError(true);
+  };
+  return (
+  <React.Fragment>
+    {ReactDOM.createPortal(<Backdrop/>, document.getElementById('backdrop'))};
+    {ReactDOM.createPortal(<OverlayModule title={props.title} message={props.title}/>, document.getElementById('overlay-module'))};
+  </React.Fragment>);
 };
 
 export default ErrorModel;
