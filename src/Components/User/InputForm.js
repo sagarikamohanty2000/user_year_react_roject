@@ -5,6 +5,7 @@ import "./InputForm.css";
 const InputForm = (props) => {
   const name = useRef();
   const year = useRef();
+  const clg =  useRef();
   const [error, setError] = useState();
 
   const errorHandler = (errorBoolean) => {
@@ -16,9 +17,10 @@ const InputForm = (props) => {
     const newUser = {
       name: name.current.value,
       year: year.current.value,
+      clg : clg.current.value
     };
 
-    if (name.current.value.trim().length === 0 || year.current.value.trim().length === 0){
+    if (name.current.value.trim().length === 0 || year.current.value.trim().length === 0 || clg.current.value.trim().length === 0){
       setError({
         title: "Invalid Input",
         message: "Please enter a valid name or age(no empty fields please)!",
@@ -38,6 +40,7 @@ const InputForm = (props) => {
     props.onSaveUserDetails(newUser);
     name.current.value ="";
     year.current.value ="";
+    clg.current.value ="";
   };
 
   return (
@@ -57,6 +60,12 @@ const InputForm = (props) => {
           </div>
           <div className="yearInput">
             <input type="number" ref={year}></input>
+          </div>
+          <div className="clgLabel">
+            <label>College</label>
+          </div>
+          <div className="clgInput">
+            <input type="text" ref={clg}></input>
           </div>
           <div className="addBtn">
             <button type="submit">Add User</button>
